@@ -20,6 +20,17 @@ $app->get('/admin', function() {
     $page->setTpl("index");
 });
 
+$app->get('/login', function() {
+    $page = new PageAdmin(
+        [
+            "header"=>false,
+            "footer"=>false,
+            "pag"=>'admin/auth/'
+        ]
+);
+    $page->setTpl("login");
+});
+
 $app->run();
 
 ?>

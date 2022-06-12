@@ -5,22 +5,29 @@ use Rain\Tpl;
 
 class PageSite {
 
-    private $tpl;
-    private $options = [];
-    private $defaults = [
-        'data' => [],
+    protected $tpl;
+    protected $options = [];
+    protected $defaults = [
+        'header' => true,
+        'footer' => true,
+        'pag' => "",
+        'data'   => [],
     ];
 
-    public function __construct($options = array(), $tplDir="/App/view/templates/site/")
+    public function __construct($options = array(), $tplDir="/App/view/views/site/templates/")
     {
 
-        $this->options = array_merge($this->defaults,$options);
 
+        $this->options = array_merge($this->defaults,$options);
         $config = array(
-            "tpl_dir"       => $_SERVER['DOCUMENT_ROOT'].$tplDir,
+            "tpl_dir"       => $this->options['pag'] ? $_SERVER['DOCUMENT_ROOT'].'/App/view/views/'.$this->options['pag'] : $_SERVER['DOCUMENT_ROOT'].$tplDir,
             "cache_dir"     => $_SERVER['DOCUMENT_ROOT'].'/App/view/views-cache/',
             "debug"         => false // set to false to improve the speed
         );
+
+
+
+
 
         Tpl::configure( $config );
 
@@ -28,11 +35,13 @@ class PageSite {
 
         $this->setData($this->options['data']);
 
-        $this->tpl->draw('header');
+        if($this->options['header']){
+            $this->tpl->draw('header');
+        }
 
     }
 
-    private function setData($data = array())
+    public function setData($data = array())
     {
         foreach ($data as $key =>$value){
             $this->tpl->assign($key,$value);
@@ -47,7 +56,9 @@ class PageSite {
 
     public function __destruct()
     {
-        $this->tpl->draw('footer');
+        if($this->options['footer']){
+            $this->tpl->draw('footer');
+        }
 
     }
 }
