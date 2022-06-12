@@ -1,5 +1,5 @@
 <?php
-namespace App\views;
+namespace App\view;
 
 use Rain\Tpl;
 
@@ -17,8 +17,8 @@ class Page {
         $this->options = array_merge($this->defaults,$options);
 
         $config = array(
-            "tpl_dir"       => $_SERVER['DOCUMENT_ROOT'].'/app/views/',
-            "cache_dir"     => $_SERVER['DOCUMENT_ROOT'].'/app/views/cache',
+            "tpl_dir"       => $_SERVER['DOCUMENT_ROOT'].'/App/view/',
+            "cache_dir"     => $_SERVER['DOCUMENT_ROOT'].'/App/view/views-cache',
             "debug"         => false // set to false to improve the speed
         );
 
@@ -52,4 +52,4 @@ class Page {
     }
 }
 
-
+?>
