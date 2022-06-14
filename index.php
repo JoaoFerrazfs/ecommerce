@@ -4,6 +4,7 @@ require_once("./vendor/autoload.php");
 use \Slim\Slim;
 use App\view\PageSite;
 use App\view\PageAdmin;
+use App\Model\User;
 
 $app = new Slim();
 
@@ -20,7 +21,7 @@ $app->get('/admin', function() {
     $page->setTpl("index");
 });
 
-$app->get('/login', function() {
+$app->get('/admin/login', function() {
     $page = new PageAdmin(
         [
             "header"=>false,
@@ -31,6 +32,12 @@ $app->get('/login', function() {
     $page->setTpl("login");
 });
 
-$app->run();
+$app->post('/admin/login', function() {
+    var_dump('teste');
+    User::login($_POST['login'], $_POST['password']);
+    header("Location: /admin");
+    exit;
+});
 
-?>
+
+$app->run();
