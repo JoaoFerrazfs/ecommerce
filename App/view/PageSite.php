@@ -2,6 +2,8 @@
 namespace App\view;
 
 use Rain\Tpl;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 class PageSite {
 
@@ -27,8 +29,6 @@ class PageSite {
 
 
 
-
-
         Tpl::configure( $config );
 
         $this->tpl = new Tpl;
@@ -36,19 +36,20 @@ class PageSite {
         $this->setData($this->options['data']);
 
         if($this->options['header']){
-            $this->tpl->draw('header');
+            $header = $this->tpl->draw('header');
         }
 
     }
 
     public function setData($data = array())
     {
+        var_dump($data);
         foreach ($data as $key =>$value){
             $this->tpl->assign($key,$value);
         }
     }
 
-    public function setTpl($name, $data = array(),$returnHTML = false)
+    public function setTpl($name, $data = array(),$returnHTML = false,)
     {
         $this->setData($this->options['data']);
         return $this->tpl->draw($name,$returnHTML);
