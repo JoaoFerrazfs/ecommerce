@@ -1,3 +1,4 @@
 .idea/
 vendor/
-App/view/views-cache/
+App/view/views-cache/*
+App/view/views-cache

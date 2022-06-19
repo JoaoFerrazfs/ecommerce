@@ -43,7 +43,7 @@ class PageSite {
 
     public function setData($data = array())
     {
-        var_dump($data);
+
         foreach ($data as $key =>$value){
             $this->tpl->assign($key,$value);
         }
@@ -51,7 +51,7 @@ class PageSite {
 
     public function setTpl($name, $data = array(),$returnHTML = false,)
     {
-        $this->setData($this->options['data']);
+        $this->setData($data);
         return $this->tpl->draw($name,$returnHTML);
     }
 
