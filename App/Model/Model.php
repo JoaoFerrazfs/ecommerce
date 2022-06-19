@@ -7,12 +7,12 @@ class Model
     private $values = [];
 
     public function __call($name, $arguments)
-{
-    $method = substr($name,0,3);
-    $fieldName = substr($name,3,strlen($name));
-
-    switch ($method)
     {
+        $method = substr($name, 0, 3);
+        $fieldName = substr($name, 3, strlen($name));
+
+        switch ($method)
+        {
         case 'get':
             return $this->values[$fieldName];
         break;
@@ -20,8 +20,8 @@ class Model
         case 'set':
             return $this->values[$fieldName] = $arguments[0];
         break;
+        }
     }
-}
     public function setData($data = array())
     {
         foreach ($data as $key => $value){
@@ -29,8 +29,8 @@ class Model
         }
     }
 
-    public function  getValues()
+    public function getValues()
     {
-     return $this->values;
+        return $this->values;
     }
 }
