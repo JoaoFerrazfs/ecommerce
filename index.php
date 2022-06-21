@@ -8,6 +8,7 @@ use \Slim\Factory\AppFactory;
 use App\view\PageSite;
 use App\view\PageAdmin;
 use App\Model\User;
+use App\Model\Category;
 
 
 $app = AppFactory::create();
@@ -253,6 +254,65 @@ $app->post("/admin/forgot/reset",function (Request $request, Response $response)
 
 });
 
+$app->get('/admin/categories',function (Request $request, Response $response){
+    $page = new PageAdmin();
+    $categories = Category::listAll();
+
+    $page->setTpl('categoriesManager/categories',array(
+        'categories' => $categories
+    ));
+    return $response;
+});
+
+$app->get('/admin/categories/create',function (Request $request, Response $response){
+    $page = new PageAdmin();
+    $page->setTpl('categoriesManager/categories-create');
+    return $response;
+});
+
+$app->post('/admin/categories/create',function (Request $request, Response $response){
+    $category = new Category();
+    $category->setData($_POST);
+    $category->save();
+
+    return $response
+        ->withHeader('Location', '/admin/categories')
+        ->withStatus(302);
+});
+
+$app->get('/admin/categories/{idCategory}/delete',function (Request $request, Response $response, $idCategory){
+    $category = new Category();
+    $category->get($idCategory['idCategory']);
+    $category->delete();
+
+    return $response
+        ->withHeader('Location', '/admin/categories')
+        ->withStatus(302);
+});
+
+$app->get('/admin/categories/{idCategory}',function (Request $request, Response $response, $idCategory){
+    $page = new PageAdmin();
+    $category = new Category();
+    $category->get($idCategory['idCategory']);
+
+    $page->setTpl('categoriesManager/categories-update', array(
+        'category' => $category->getValues()
+    ));
+
+});
+
+$app->post('/admin/categories/{idCategory}',function (Request $request, Response $response, $idCategory){
+    $category = new Category();
+    $category->get($idCategory['idCategory']);
+
+    $category->setData($_POST);
+    $category->save();
+
+    return $response
+        ->withHeader('Location', '/admin/categories')
+        ->withStatus(302);
+
+});
 
 
 $app->run();

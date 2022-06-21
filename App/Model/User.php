@@ -3,7 +3,6 @@
 namespace App\Model;
 
 use App\database\Sql;
-use App\Model\Model;
 use Exception;
 
 class User extends Model
