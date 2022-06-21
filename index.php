@@ -314,5 +314,17 @@ $app->post('/admin/categories/{idCategory}',function (Request $request, Response
 
 });
 
+$app->get('/categories/{idcategory}',function (Request $request, Response $response, $idcategory){
+    $category = new Category();
+    $page = new PageSite();
+    $category->get($idcategory['idcategory']);
+
+    $page->setTpl('categories/category', array(
+        'category' => $category->getValues(),
+        'products' => []
+    ));
+
+});
+
 
 $app->run();
