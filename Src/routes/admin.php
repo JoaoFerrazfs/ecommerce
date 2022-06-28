@@ -246,6 +246,7 @@ $app->get('/admin/products/create',function (Request $request, Response $respons
     User::verifyLogin();
     $page = new PageAdminController();
     $page->setTpl('productsManager'.DIRECTORY_SEPARATOR . 'products-create');
+    return $response;
 });
 
 $app->post('/admin/products/create',function (Request $request, Response $response){
@@ -253,12 +254,11 @@ $app->post('/admin/products/create',function (Request $request, Response $respon
     User::verifyLogin();
 
     $product = new Product();
-
     $product->setData($_POST);
-
-    print_r($product);
-
+    $product->setPhoto($_FILES['file']);
     $product->save();
+
+    var_dump($product);
 
     return $response
         ->withHeader('Location', '/admin/produtos')
@@ -286,14 +286,13 @@ $app->post('/admin/products/{idProduct}',function (Request $request, Response $r
 
     $product = new Product();
     $product->get($idProduct['idProduct']);
-
     $product->setData($_POST);
-    $product->setPhoto($_FILES);
+    $product->setPhoto($_FILES['file']);
     $product->save();
 
 
-    return $response;
-//        ->withHeader('Location', '/admin/produtos')
-//        ->withStatus(302);
+    return $response
+        ->withHeader('Location', '/admin/produtos')
+        ->withStatus(302);
 });
 

@@ -10,6 +10,7 @@
 <!-- Main content -->
 <section class="content">
 
+  <?php echo htmlspecialchars( $product["idproduct"], ENT_COMPAT, 'UTF-8', FALSE ); ?>
   <div class="row">
   	<div class="col-md-12">
   		<div class="box box-primary">
