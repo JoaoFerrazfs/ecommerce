@@ -24,16 +24,17 @@ class PageSiteController {
         $config = array(
             "tpl_dir"       => $this->options['pag'] ? $_SERVER['DOCUMENT_ROOT'].'/Src/resources/views/'.$this->options['pag'] : $_SERVER['DOCUMENT_ROOT'].$tplDir,
             "cache_dir"     => $_SERVER['DOCUMENT_ROOT'].'/Src/resources/views-cache/',
-            "debug"         => false // set to false to improve the speed
+            "debug"         => false, // set to false to improve the speed
         );
 
         Tpl::configure( $config );
+
         $this->tpl = new Tpl;
 
         $this->setData($this->options['data']);
 
         if($this->options['header']){
-            $header = $this->tpl->draw('header');
+            $this->tpl->draw('header');
         }
 
     }
