@@ -2,3 +2,4 @@
 vendor/
 App/view/views-cache/*
 App/view/views-cache
+/Src/resources/views-cache/

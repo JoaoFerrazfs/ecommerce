@@ -4,12 +4,14 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Src\App\Controllers\PageSiteController;
 use Src\App\Models\Category;
+use Src\App\Models\Product;
 
 
 $app->get(
     '/', function (Request $request, Response $response) {
     $page = new PageSiteController();
-    $page->setTpl('index');
+    $product = Product::listAll();
+    $page->setTpl('index',['product'=>$product]);
     return $response;
 }
 );
