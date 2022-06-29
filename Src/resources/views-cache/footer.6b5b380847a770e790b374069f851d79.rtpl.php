@@ -1,94 +1,98 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?><div class="footer-top-area">
-    <div class="zigzag-bottom"></div>
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!-- start footer Area -->
+<footer class="footer-area section_gap">
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-sm-6">
-                <div class="footer-about-us">
-                    <h2>Hcode Store</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
-                    <div class="footer-social">
-                        <a href="https://www.facebook.com/hcodebr" target="_blank"><i class="fa fa-facebook"></i></a>
-                        <a href="https://twitter.com/hcodebr" target="_blank"><i class="fa fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/channel/UCjWENuSH2gX55-y7QSZiWxA" target="_blank"><i class="fa fa-youtube"></i></a>
-                    </div>
+            <div class="col-lg-3  col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h6>About Us</h6>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore
+                        magna aliqua.
+                    </p>
                 </div>
             </div>
+            <div class="col-lg-4  col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h6>Newsletter</h6>
+                    <p>Stay update with our latest</p>
+                    <div class="" id="mc_embed_signup">
 
-            <div class="col-md-3 col-sm-6">
-                <div class="footer-menu">
-                    <h2 class="footer-wid-title">Navegação </h2>
-                    <ul>
-                        <li><a href="#">Minha Conta</a></li>
-                        <li><a href="#">Meus Pedidos</a></li>
-                        <li><a href="#">Lista de Desejos</a></li>
-                    </ul>
-                </div>
-            </div>
+                        <form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                              method="get" class="form-inline">
 
-            <div class="col-md-3 col-sm-6">
-                <div class="footer-menu">
-                    <h2 class="footer-wid-title">Categorias</h2>
-                    <ul>
-                        <?php require $this->checkTemplate("categories/categories-menu");?>
-                    </ul>
-                </div>
-            </div>
+                            <div class="d-flex flex-row">
 
-            <div class="col-md-3 col-sm-6">
-                <div class="footer-newsletter">
-                    <h2 class="footer-wid-title">Newsletter</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus!</p>
-                    <div class="newsletter-form">
-                        <form action="#">
-                            <input type="email" placeholder="Type your email">
-                            <input type="submit" value="Subscribe">
+                                <input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '"
+                                       required="" type="email">
+
+
+                                <button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+                                <div style="position: absolute; left: -5000px;">
+                                    <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+                                </div>
+
+                                <!-- <div class="col-lg-4 col-md-4">
+                                            <button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
+                                        </div>  -->
+                            </div>
+                            <div class="info"></div>
                         </form>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div> <!-- End footer top area -->
-
-<div class="footer-bottom-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="copyright">
-                    <p>&copy; 2017 Hcode Treinamentos. <a href="http://www.hcode.com.br" target="_blank">hcode.com.br</a></p>
+            <div class="col-lg-3  col-md-6 col-sm-6">
+                <div class="single-footer-widget mail-chimp">
+                    <h6 class="mb-20">Instragram Feed</h6>
+                    <ul class="instafeed d-flex flex-wrap">
+                        <li><img src="img/i1.jpg" alt=""></li>
+                        <li><img src="img/i2.jpg" alt=""></li>
+                        <li><img src="img/i3.jpg" alt=""></li>
+                        <li><img src="img/i4.jpg" alt=""></li>
+                        <li><img src="img/i5.jpg" alt=""></li>
+                        <li><img src="img/i6.jpg" alt=""></li>
+                        <li><img src="img/i7.jpg" alt=""></li>
+                        <li><img src="img/i8.jpg" alt=""></li>
+                    </ul>
                 </div>
             </div>
-
-            <div class="col-md-4">
-                <div class="footer-card-icon">
-                    <i class="fa fa-cc-discover"></i>
-                    <i class="fa fa-cc-mastercard"></i>
-                    <i class="fa fa-cc-paypal"></i>
-                    <i class="fa fa-cc-visa"></i>
+            <div class="col-lg-2 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h6>Follow Us</h6>
+                    <p>Let us be social</p>
+                    <div class="footer-social d-flex align-items-center">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                        <a href="#"><i class="fa fa-behance"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
+            <p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
     </div>
-</div> <!-- End footer bottom area -->
+</footer>
+<!-- End footer Area -->
 
-<!-- Latest jQuery form server -->
-<script src="https://code.jquery.com/jquery.min.js"></script>
-
-<!-- Bootstrap JS form CDN -->
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-<!-- jQuery sticky menu -->
-<script src="/Src/resources/base-templates/site/js/owl.carousel.min.js"></script>
+<script src="/Src/resources/base-templates/site/js/vendor/jquery-2.2.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+<script src="/Src/resources/base-templates/site/js/vendor/bootstrap.min.js"></script>
+<script src="/Src/resources/base-templates/site/js/jquery.ajaxchimp.min.js"></script>
+<script src="/Src/resources/base-templates/site/js/jquery.nice-select.min.js"></script>
 <script src="/Src/resources/base-templates/site/js/jquery.sticky.js"></script>
-
-<!-- jQuery easing -->
-<script src="/Src/resources/base-templates/site/js/jquery.easing.1.3.min.js"></script>
-
-<!-- Main Script -->
+<script src="/Src/resources/base-templates/site/js/nouislider.min.js"></script>
+<script src="/Src/resources/base-templates/site/js/countdown.js"></script>
+<script src="/Src/resources/base-templates/site/js/jquery.magnific-popup.min.js"></script>
+<script src="/Src/resources/base-templates/site/js/owl.carousel.min.js"></script>
+<!--gmaps Js-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+<script src="/Src/resources/base-templates/site/js/gmaps.min.js"></script>
 <script src="/Src/resources/base-templates/site/js/main.js"></script>
-
-<!-- Slider -->
-<script type="text/javascript" src="/Src/resources/base-templates/site/js/bxslider.min.js"></script>
-<script type="text/javascript" src="/Src/resources/base-templates/site/js/script.slider.js"></script>
 </body>
+
 </html>
