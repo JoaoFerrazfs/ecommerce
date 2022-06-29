@@ -238,7 +238,7 @@ $app->get('/admin/produtos',function (Request $request, Response  $response){
         'products' => $products
     ));
 
-
+    return $response;
 });
 
 $app->get('/admin/products/create',function (Request $request, Response $response){
@@ -258,7 +258,6 @@ $app->post('/admin/products/create',function (Request $request, Response $respon
     $product->setPhoto($_FILES['file']);
     $product->save();
 
-    var_dump($product);
 
     return $response
         ->withHeader('Location', '/admin/produtos')
@@ -295,4 +294,55 @@ $app->post('/admin/products/{idProduct}',function (Request $request, Response $r
         ->withHeader('Location', '/admin/produtos')
         ->withStatus(302);
 });
+
+$app->get('/admin/categories/{idcategory}/products/{idproduct}/add',function(Request $request, Response $response, $data )
+{
+    User::verifyLogin();
+
+    $category = new Category();
+    $category->get($data['idcategory']);
+
+    $product = new Product();
+    $product->get($data['idproduct']);
+
+    $category->addProduct($product);
+
+    return $response
+        ->withHeader('Location', '/admin/categories/'.$data['idcategory'].'/products')
+        ->withStatus(302);
+});
+
+$app->get('/admin/categories/{idcategory}/products/{idproduct}/remove',function(Request $request, Response $response, $data)
+{
+    User::verifyLogin();
+
+    $category = new Category();
+    $category->get($data['idcategory']);
+
+    $product = new Product();
+    $product->get($data['idproduct']);
+
+    $category->removeProduct($product);
+
+    return $response
+        ->withHeader('Location', '/admin/categories/'.$data['idcategory'].'/products')
+        ->withStatus(302);
+});
+
+$app->get('/admin/categories/{idcategory}/products',function(Request $request, Response $response, $idcategory)
+{
+    User::verifyLogin();
+
+    $category = new Category();
+    $category->get($idcategory['idcategory']);
+
+    $page = new PageAdminController();
+    $page->setTpl('Relationships'.DIRECTORY_SEPARATOR.'categories-products',
+    array('category' => $category->getValues(),
+        'productsRelated'=>$category->getProducts(true),
+        'productsNotRelated'=>$category->getProducts(false)));
+
+    return $response;
+});
+
 

@@ -18,12 +18,32 @@ $app->get(
 
 $app->get('/categories/{idcategory}',function (Request $request, Response $response, $idcategory){
     $category = new Category();
+      $category->get($idcategory['idcategory']);
+
+     $paginate = $_GET['page'] ?? 1 ;
+
+    $productsPagination = $category->getProductsPage($paginate);
+
+    $pages = [];
+
+    for ($i=1 ; $i <= $productsPagination['page'] ;$i++ )
+    {
+        array_push($pages,
+            [
+                'link' => '/categories/'.$category->getidcategory().'?page='. $i,
+                'page'=>$i
+            ]);
+    }
+
     $page = new PageSiteController();
     $category->get($idcategory['idcategory']);
 
     $page->setTpl('categories'.DIRECTORY_SEPARATOR . 'category', array(
         'category' => $category->getValues(),
-        'products' => []
+        'products' => $productsPagination['data'],
+        'pages'    => $pages
     ));
 
+
+    return $response;
 });

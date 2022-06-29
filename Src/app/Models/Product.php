@@ -60,7 +60,6 @@ class Product extends Model
 
     public function checkPhoto()
     {
-        var_dump($this->getnamedesphoto());
         if(!file_exists('/Src/resources/img/products/'.$this->getnamedesphoto()) && $this->getnamedesphoto() !== null )
         {
             $url =  '/Src/resources/img/products/'.$this->getnamedesphoto();

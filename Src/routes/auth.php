@@ -32,7 +32,6 @@ $app->get('/admin/forgot', function (Request $request, Response $response) {
 $app->post('/admin/forgot', function (Request $request, Response $response) {
     $user = User::getForgot($_POST['email']);
 
-    var_dump($user);
     return $response
         ->withHeader('Location', '/admin/forgot/sent')
         ->withStatus(302);
