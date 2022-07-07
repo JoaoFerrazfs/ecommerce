@@ -18,7 +18,7 @@ $app->get(
 
 $app->get('/categories/{idcategory}',function (Request $request, Response $response, $idcategory){
     $category = new Category();
-      $category->get($idcategory['idcategory']);
+    $category->get($idcategory['idcategory']);
 
      $paginate = $_GET['page'] ?? 1 ;
 
@@ -46,4 +46,29 @@ $app->get('/categories/{idcategory}',function (Request $request, Response $respo
 
 
     return $response;
+});
+
+$app->get('/products/{desurl}', function (Request $request, Response $response, $desurl){
+
+    $product = new Product();
+    $product->getFromUrl($desurl['desurl']);
+
+
+    $page = new PageSiteController();
+    $page->setTpl('product'.DIRECTORY_SEPARATOR.'single-product',
+    [
+        'product' => $product->getValues(),
+        'categories' => $product->getCategories()
+    ]);
+
+    return $response ;
+
+});
+
+$app->get('/cart',function (){
+
+    $page = new PageSiteController();
+
+    $page->setTpl('/');
+
 });

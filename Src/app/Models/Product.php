@@ -128,5 +128,30 @@ class Product extends Model
 
     }
 
+    public function getFromUrl($url)
+    {
+        $sql = new Sql();
+
+        $rows = $sql->select('SELECT * FROM tb_products where desurl =:desurl ',
+        [
+            ':desurl' =>'/products/'. $url
+        ]);
+
+        $this->setData($rows[0]);
+
+        return ;
+    }
+
+    public function getCategories()
+    {
+        $sql = new Sql();
+
+        $results = $sql->select('select * from tb_categories a inner join  tb_categoriesproducts b on a.idcategory = b.idcategory where b.idproduct = :idproduct',
+        [
+            ':idproduct' => $this->getidproduct()
+        ]);
+        return $results ;
+    }
+
 
 }
