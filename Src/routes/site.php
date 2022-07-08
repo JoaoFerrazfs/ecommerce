@@ -5,6 +5,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Src\App\Controllers\PageSiteController;
 use Src\App\Models\Category;
 use Src\App\Models\Product;
+use Src\App\Models\Cart;
 
 
 $app->get(
@@ -67,8 +68,10 @@ $app->get('/products/{desurl}', function (Request $request, Response $response, 
 
 $app->get('/cart',function (){
 
+    $cart = Cart::getFromSession();
+
     $page = new PageSiteController();
 
-    $page->setTpl('/');
+    $page->setTpl('cart'.DIRECTORY_SEPARATOR.'cart');
 
 });
