@@ -66,12 +66,85 @@ $app->get('/products/{desurl}', function (Request $request, Response $response, 
 
 });
 
-$app->get('/cart',function (){
+$app->get('/cart',function (Request $request, Response $response){
 
     $cart = Cart::getFromSession();
 
     $page = new PageSiteController();
 
-    $page->setTpl('cart'.DIRECTORY_SEPARATOR.'cart');
+    $page->setTpl('cart'.DIRECTORY_SEPARATOR.'cart',
+    [
+        'cart' => $cart->getValues(),
+        'products' => $cart->getProducts(),
+        'error' => Cart::getMsgError()
+    ]);
+
+
+    var_dump($cart->getValues());
+
+    return $response;
+
+
+});
+
+$app->get('/cart/{idproduct}/add',function (Request $request, Response $response, $idproduct){
+    $product = new Product();
+
+    $product->get($idproduct['idproduct']);
+
+    $cart = Cart::getFromSession();
+
+
+
+    $qtd = (isset($_GET['qty'])) ? (int)$_GET['qty'] : 1;
+
+    for($i = 0 ; $i < $qtd ; $i++)
+    {
+        $cart->addProduct($product);
+    }
+
+    return $response
+        ->withHeader('Location', '/cart')
+        ->withStatus(302);
+
+});
+
+$app->get('/cart/{idproduct}/minus',function (Request $request, Response $response, $idproduct){
+    $product = new Product();
+
+    $product->get($idproduct['idproduct']);
+
+    $cart = Cart::getFromSession();
+
+    $cart->removeProduct($product);
+
+    return $response
+        ->withHeader('Location', '/cart')
+        ->withStatus(302);
+
+});
+
+$app->get('/cart/{idproduct}/remove',function (Request $request, Response $response, $idproduct){
+    $product = new Product();
+
+    $product->get($idproduct['idproduct']);
+
+    $cart = Cart::getFromSession();
+
+    $cart->removeProduct($product,true);
+
+    return $response
+        ->withHeader('Location', '/cart')
+        ->withStatus(302);
+
+});
+
+$app->post('/cart/freight',function (Request $request, Response $response)
+{
+    $cart = Cart::getFromSession();
+
+    $cart->setFreight($_POST['cep']);
+
+    header("Location: /cart");
 
 });

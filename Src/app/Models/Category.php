@@ -109,7 +109,7 @@ class Category extends Model
             ));
     }
 
-    public function getProductsPage($page = 1 , $perPage = 1)
+    public function getProductsPage($page = 1 , $perPage = 10)
     {
         $start = ($page - 1 ) * $perPage;
         $sql = new Sql();

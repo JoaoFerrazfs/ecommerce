@@ -4285,9 +4285,9 @@ label {
     padding: 0px 40px; }
 .cart_inner .table tbody tr.shipping_area td:nth-child(3) {
   vertical-align: top; }
-.cart_inner .table tbody tr.shipping_area .shipping_box {
-  margin-left: -250px;
-  text-align: right; }
+/*.cart_inner .table tbody tr.shipping_area .shipping_box {*/
+/*  !*margin-left: 20px;*!*/
+/*  text-align: right; }*/
   .cart_inner .table tbody tr.shipping_area .shipping_box .list li {
     margin-bottom: 12px; }
     .cart_inner .table tbody tr.shipping_area .shipping_box .list li:last-child {
@@ -4351,7 +4351,7 @@ label {
     outline: none;
     border: 1px solid #eeeeee;
     background: #e8f0f2;
-    width: 100%;
+    width: 40%;
     padding: 0px 15px;
     margin-bottom: 20px; }
 .cart_inner .table tbody tr.out_button_area .checkout_btn_inner {
